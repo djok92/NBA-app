@@ -36,6 +36,8 @@ function clearTables(arr) {
   arr.forEach(table => (table.innerHTML = ""));
 }
 
+
+
 export {
   createHeader,
   tableDataToRow,

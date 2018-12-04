@@ -1,3 +1,53 @@
+const dataTableEastern = document.querySelector(".data-table--eastern");
+const dataTableWestern = document.querySelector(".data-table--western");
+const dataTableAtlantic = document.querySelector(".data-table--atlantic");
+const dataTableCentral = document.querySelector(".data-table--central");
+const dataTableSouthEast = document.querySelector(".data-table--southeast");
+const dataTableNorthWest = document.querySelector(".data-table--northwest");
+const dataTablePacific = document.querySelector(".data-table--pacific");
+const dataTableSouthWest = document.querySelector(".data-table--southwest");
+
+//Tables from DOM
+
+const dataTableAllPlayers = document.querySelector(".data-table--all-players");
+const dataTableSinglePlayerStats = document.querySelector(
+  ".data-table--singe-player-stats"
+);
+
+
+//Conference tables
+const conferenceTables = [dataTableEastern, dataTableWestern];
+
+//Division tables
+const divisionTables = [
+  dataTableAtlantic,
+  dataTableCentral,
+  dataTableSouthEast,
+  dataTableNorthWest,
+  dataTablePacific,
+  dataTableSouthWest
+];
+
+//All tables
+const tables = [
+  dataTableEastern,
+  dataTableWestern,
+  dataTableAtlantic,
+  dataTableCentral,
+  dataTableSouthEast,
+  dataTableNorthWest,
+  dataTablePacific,
+  dataTableSouthWest,
+  dataTableAllPlayers,
+  dataTableSinglePlayerStats
+];
+
+//Player Tables
+const playerTables = [dataTableAllPlayers];
+
+//Single player table
+const singlePlayerTables = [dataTableSinglePlayerStats];
+
 function conferencePlacement(team, row) {
   team.Conference === "Eastern" ?
     dataTableEastern.appendChild(row) :
@@ -38,9 +88,27 @@ function getPlayerImg(imgUrl) {
   return img.outerHTML;
 }
 
+function tableTitle(tableArr) {
+  tableArr.forEach(table => {
+    const tableCaptionHolder = document.createElement("thead");
+    let tableName = document.createElement("h4");
+    tableName.innerHTML = table.getAttribute("data-name");
+    tableCaptionHolder.appendChild(tableName);
+    table.appendChild(tableCaptionHolder);
+  });
+}
+
 export {
+  dataTableAllPlayers,
+  dataTableSinglePlayerStats,
+  tables,
+  conferenceTables,
+  divisionTables,
+  playerTables,
+  singlePlayerTables,
   conferencePlacement,
   divisionPlacement,
   setPlayerId,
-  getPlayerImg
+  getPlayerImg,
+  tableTitle
 }

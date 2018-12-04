@@ -6,13 +6,21 @@ import {
   tableDataToRow,
   addActiveClass,
   removeActiveClass,
-  clearTables,
+  clearTables
 } from "./table-functions";
 import {
+  dataTableAllPlayers,
+  dataTableSinglePlayerStats,
+  tables,
+  conferenceTables,
+  divisionTables,
+  playerTables,
+  singlePlayerTables,
   conferencePlacement,
   divisionPlacement,
   setPlayerId,
-  getPlayerImg
+  getPlayerImg,
+  tableTitle
 } from "./placement-and-player-functions";
 import loaderHandle from "./loader-handle";
 
@@ -24,52 +32,6 @@ const submit = document.querySelector(".all-teams__btn");
 const goBackArrowHolder = document.querySelector(".arrow-back");
 const goBackArrow = document.querySelector(".arrow-back span");
 
-//Tables from DOM
-const dataTableEastern = document.querySelector(".data-table--eastern");
-const dataTableWestern = document.querySelector(".data-table--western");
-const dataTableAtlantic = document.querySelector(".data-table--atlantic");
-const dataTableCentral = document.querySelector(".data-table--central");
-const dataTableSouthEast = document.querySelector(".data-table--southeast");
-const dataTableNorthWest = document.querySelector(".data-table--northwest");
-const dataTablePacific = document.querySelector(".data-table--pacific");
-const dataTableSouthWest = document.querySelector(".data-table--southwest");
-const dataTableAllPlayers = document.querySelector(".data-table--all-players");
-const dataTableSinglePlayerStats = document.querySelector(
-  ".data-table--singe-player-stats"
-);
-
-//All tables
-const tables = [
-  dataTableEastern,
-  dataTableWestern,
-  dataTableAtlantic,
-  dataTableCentral,
-  dataTableSouthEast,
-  dataTableNorthWest,
-  dataTablePacific,
-  dataTableSouthWest,
-  dataTableAllPlayers,
-  dataTableSinglePlayerStats
-];
-
-//Conference tables
-const conferenceTables = [dataTableEastern, dataTableWestern];
-
-//Division tables
-const divisionTables = [
-  dataTableAtlantic,
-  dataTableCentral,
-  dataTableSouthEast,
-  dataTableNorthWest,
-  dataTablePacific,
-  dataTableSouthWest
-];
-
-//Player Tables
-const playerTables = [dataTableAllPlayers];
-
-//Single player table
-const singlePlayerTables = [dataTableSinglePlayerStats];
 
 function singlePlayerStats(api) {
   return function () {
@@ -141,6 +103,8 @@ function conferenceStandings() {
       "Percentage"
     ];
 
+    tableTitle(conferenceTables);
+
     createHeader(headerData, conferenceTables);
 
     data.forEach(team => {
@@ -174,6 +138,8 @@ function divisionStandings() {
       "Road",
       "Percentage"
     ];
+
+    tableTitle(divisionTables)
 
     createHeader(headerData, divisionTables);
 
