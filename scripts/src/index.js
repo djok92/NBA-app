@@ -15,7 +15,7 @@ import {
   getPlayerImg
 } from "./placement-and-player-functions";
 import loaderHandle from "./loader-handle";
-import setupTable from "./setup-table";
+
 
 //Links
 const linkConference = document.querySelector(".conference");
@@ -254,6 +254,13 @@ function playerStatsByTeam() {
       }
     });
   });
+}
+
+
+function setupTable() {
+  removeActiveClass(tables);
+  clearTables(tables);
+  goBackArrowHolder.style.display = "none";
 }
 
 function setupListeners() {
