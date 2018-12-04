@@ -1,0 +1,48 @@
+.main-container {
+  margin: 30px 0 30px 0;
+  text-align: center;
+
+  &__heading {
+    margin-bottom: 20px;
+    font-size: 4rem;
+  }
+
+  &__subheading {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+}
+
+.team-stats {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.team-stats__heading,
+.player-stats__heading {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.team-stats__links,
+.player-stats__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+
+  a {
+    margin: 10px;
+  }
+}
+
+.player-stats__links {
+  >* {
+    margin: 5px;
+  }
+}

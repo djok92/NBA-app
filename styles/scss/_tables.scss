@@ -1,0 +1,117 @@
+.data-display {
+  margin: 30px 0;
+
+  .active {
+    display: table;
+    margin: 10px
+  }
+}
+
+.conference {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  table {
+    tr {
+      td {
+        font-size: 1.5rem;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+.data-table--eastern,
+.data-table--western {
+  width: 600px;
+  border-spacing: 0px;
+  display: none;
+  margin: 0 15px;
+}
+
+.table {
+  border-collapse: collapse;
+
+  tr {
+    td {
+      font-size: 1.4rem;
+      padding: 5px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    td:first-of-type {
+      text-align: left;
+    }
+  }
+
+  thead tr {
+    border-bottom: 1px solid #63737b;
+    color: #1570b5;
+
+    td {
+      padding: 10px 7px 10px 7px;
+      font-size: 1.8rem;
+    }
+
+  }
+}
+
+.division {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  table {
+    width: 550px;
+    display: none;
+  }
+}
+
+.data-table--all-players {
+  margin: 0 auto !important;
+}
+
+.data-table--singe-player-stats {
+  margin: 0 auto !important;
+}
+
+.players {
+  text-align: center;
+
+  &__single-players-stats {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+
+    .arrow-back {
+      text-align: left;
+      display: none;
+
+      span {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        color: steelblue;
+        cursor: pointer;
+
+        .fas {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  img {
+    height: 70px;
+    width: 50px;
+    margin-right: 10px;
+  }
+}
+
+.player-name {
+  color: steelblue;
+  cursor: pointer;
+}

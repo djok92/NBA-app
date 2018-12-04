@@ -1,0 +1,39 @@
+.all-teams__btn {
+  margin: 20px 0;
+  padding: 15px 80px;
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+span.select2 {
+  width: 75px !important;
+}
+
+input.select2-search__field {
+  display: none !important;
+}
+
+
+.select2-selection--single {
+  outline: none;
+  border: 1px solid black !important;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  span {
+    color: black !important;
+  }
+}

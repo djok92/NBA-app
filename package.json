@@ -1,0 +1,26 @@
+{
+  "name": "nba-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "watch": "node-sass styles/scss/main.scss dist/css/main.css -w",
+    "compile:sass": "node-sass styles/scss/main.scss dist/css/main.css",
+    "compress:css": "node-sass dist/css/main.css dist/css/main.css --output-style compressed",
+    "build": "npm-run-all compile:sass compress:css",
+    "build-webpack": "webpack --mode production --watch"
+  },
+  "author": "Stefan Djokic",
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "^3.3.1",
+    "node-sass": "^4.10.0",
+    "npm-run-all": "^4.1.5",
+    "select2": "^4.0.6-rc.1",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0"
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NBA | Stats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+  <link rel="stylesheet" href="styles/css/vendors/all.min.css">
+  <link rel="stylesheet" href="styles/css/vendors/select2.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="dist/css/main.css" />
+</head>
+
+<body>
+
+  <div class="main-container">
+    <h1 class="main-container__heading">NBA stats for 2018/19 season</h1>
+    <h3 class="main-container__subheading">Choose your parameters and go!</h3>
+
+    <div class="team-stats">
+      <h1 class="team-stats__heading">Team Stats</h1>
+      <div class="team-stats__links">
+        <a href="" class="conference">Conference standings</a>
+        <a href="" class="division">Division standings</a>
+      </div>
+    </div>
+
+    <div class="player-stats">
+      <h1 class="player-stats__heading">Player Stats</h1>
+      <div class="player-stats__links">
+        <p>By Team:</p>
+        <select class="all-teams"></select>
+      </div>
+      <button class="all-teams__btn">Submit</button>
+    </div>
+  </div>
+
+
+
+  <div class="data-display">
+
+    <div class="loader-wrapper">
+      <div class="ball">
+        <div class="ball-line"></div>
+        <div class="ball-line"></div>
+        <div class="ball-line"></div>
+        <div class="ball-line"></div>
+      </div>
+    </div>
+
+    <div class="conference">
+      <table class="data-table--eastern table "></table>
+      <table class="data-table--western table"></table>
+    </div>
+
+    <div class="division">
+      <table class="data-table--atlantic table"></table>
+      <table class="data-table--central table"></table>
+      <table class="data-table--southeast table"></table>
+      <table class="data-table--northwest table"></table>
+      <table class="data-table--pacific table"></table>
+      <table class="data-table--southwest table"></table>
+    </div>
+
+    <div class="players">
+      <table class="data-table--all-players table"></table>
+      <div class="players__single-players-stats">
+        <div class="arrow-back">
+          <span><i class="fas fa-long-arrow-alt-left fa-4x"></i>Go Back</span>
+        </div>
+        <table class="data-table--singe-player-stats table"></table>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="scripts/vendors/jquery.min.js"></script>
+  <script src="scripts/vendors/select2.min.js"></script>
+  <script src="dist/js/bundle.js"></script>
+</body>
+
+</html>
