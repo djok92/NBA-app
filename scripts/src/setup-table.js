@@ -1,4 +1,3 @@
-//Setup table after/before event
 function setupTable() {
   removeActiveClass(tables);
   clearTables(tables);

@@ -74,10 +74,8 @@ const singlePlayerTables = [dataTableSinglePlayerStats];
 function singlePlayerStats(api) {
   return function () {
     fetchPlayers(api).then(data => {
-      //Show go back arrow
       goBackArrowHolder.style.display = "block";
 
-      //Data that goes in header
       const headerData = [
         "Name",
         "Team",
@@ -97,12 +95,9 @@ function singlePlayerStats(api) {
         "FT%"
       ];
 
-      //Create header for each category
       createHeader(headerData, singlePlayerTables);
 
       const dataRow = document.createElement("tr");
-
-      //Data that goes in table
       const singlePlayerStatsData = [
         data.Name,
         data.Team,
@@ -130,16 +125,12 @@ function singlePlayerStats(api) {
 
 function conferenceStandings() {
   const api = "https://api.fantasydata.net/v3/nba/stats/JSON/Standings/2019";
-  //remove all active classes of all tables
+
   removeActiveClass(tables);
-  //add active class for current table
   addActiveClass(conferenceTables);
 
   fetchTeams(api).then(data => {
-    //Sort data array by winning percentage of each team
     data.sort((a, b) => b.Percentage - a.Percentage);
-
-    //Data that goes in header
     const headerData = [
       "Name",
       "Wins",
@@ -150,13 +141,10 @@ function conferenceStandings() {
       "Percentage"
     ];
 
-    //Create header for conference tables
     createHeader(headerData, conferenceTables);
 
     data.forEach(team => {
-      //Create row for each team
       const dataRow = document.createElement("tr");
-      //Data that goes in table
       const singleTeamData = [
         team.Name,
         team.Wins,
@@ -167,9 +155,7 @@ function conferenceStandings() {
         `${team.Percentage.toFixed(3).replace(/^0+/, "")}`
       ];
 
-      //Create td cell for each data piece, and append it to the row
       tableDataToRow(singleTeamData, dataRow);
-      //Place each team in their conference
       conferencePlacement(team, dataRow);
     });
   });
@@ -179,7 +165,6 @@ function divisionStandings() {
   const api = "https://api.fantasydata.net/v3/nba/stats/JSON/Standings/2019";
 
   fetchTeams(api).then(data => {
-    //Data that goes in header
     const headerData = [
       "Name",
       "Wins",
@@ -190,13 +175,10 @@ function divisionStandings() {
       "Percentage"
     ];
 
-    //Create header for division tables
     createHeader(headerData, divisionTables);
 
     data.forEach(team => {
-      //Create row for each team
       const dataRow = document.createElement("tr");
-      //Data that goes in table
       const singleTeamData = [
         team.Name,
         team.Wins,
@@ -207,24 +189,19 @@ function divisionStandings() {
         `${team.Percentage.toFixed(3).replace(/^0+/, "")}`
       ];
 
-      //Create td cell for each data piece, and append it to the row
       tableDataToRow(singleTeamData, dataRow);
-      //Place each team in their division
       divisionPlacement(team, dataRow);
     });
   });
 }
 
 function playerStatsByTeam() {
-  //Get value from select
   const select = document.querySelector(".all-teams");
-  //Set api url with value from select
   const api = `https://api.fantasydata.net/v3/nba/stats/JSON/Players/${
     select.value
   }`;
 
   fetchPlayers(api).then(data => {
-    //Data for table header
     const headerData = [
       "Image",
       "Name",
@@ -235,23 +212,16 @@ function playerStatsByTeam() {
       "Number"
     ];
 
-    //Create header for table
     createHeader(headerData, playerTables);
 
     data.forEach(player => {
-      //Get image for each player
       const playerImg = getPlayerImg(player.PhotoUrl);
-
-      //Create row for each team
       const dataRow = document.createElement("tr");
-
-      //Check if college property is null
       let college;
       player.College === null ?
         (college = "High School / International") :
         (college = player.College);
 
-      //Data for each team
       const singleTeamData = [
         playerImg,
         player.YahooName,
@@ -262,81 +232,53 @@ function playerStatsByTeam() {
         player.Jersey
       ];
 
-      //Create td cell for each data piece, and append it to the row
       tableDataToRow(singleTeamData, dataRow);
 
-      //Append row to the table
       dataTableAllPlayers.appendChild(dataRow);
 
-      //Select player name from table
       const playerNameTable = dataRow.childNodes.item(1);
 
-      //Give player name td class for css purposes
       playerNameTable.classList.add("player-name");
 
-      //Give player name data-id attribute for single player stats function fetch
       setPlayerId("data-id", playerNameTable, player.PlayerID);
     });
 
-    //Delegate click event for each player in table
     dataTableAllPlayers.addEventListener("click", function (e) {
       e.stopImmediatePropagation();
-
-      //Target only element that has class player name
       if (e.target.classList.contains("player-name")) {
-        //clear table
         setupTable();
-        //set ap
         const api = `https://api.fantasydata.net/v3/nba/stats/JSON/PlayerSeasonStatsByPlayer/2019/${e.target.getAttribute(
           "data-id"
         )}`;
-        //run function for single player stats
         loaderHandle(singlePlayerStats(api));
       }
     });
   });
 }
 
-//Init Event Listeners for links
 function setupListeners() {
   linkConference.addEventListener("click", function (e) {
-    //prevent from submiting
     e.preventDefault();
-    //remove active classes and clear tables
     setupTable();
-    //remove all active classes of all tables
     addActiveClass(divisionTables);
-    //handle loading animation and call function
     loaderHandle(conferenceStandings);
   });
   linkDivison.addEventListener("click", function (e) {
-    //prevent from submiting
     e.preventDefault();
-    //remove active classes and clear tables
     setupTable();
-    //add active class for current table
     addActiveClass(divisionTables);
-    //handle loading animation and call function
     loaderHandle(divisionStandings);
   });
   submit.addEventListener("click", function (e) {
-    //prevent from submiting
     e.preventDefault();
-    //remove active classes and clear tables
     setupTable();
-    //add active class for current table
     addActiveClass(playerTables);
-    //handle loading animation and call function
     loaderHandle(playerStatsByTeam);
   });
   goBackArrow.addEventListener("click", function () {
-    //remove active classes and clear tables
     setupTable();
-    //add active class for current table
     addActiveClass(playerTables);
-    //hide go back arrow
     goBackArrowHolder.style.display = "none";
-    //go back to results page
     loaderHandle(playerStatsByTeam);
   });
 }
