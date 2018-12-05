@@ -3,9 +3,7 @@ App for NBA team and player stats
 
 Small app that uses API from https://developer.fantasydata.com.
 
-On the top of index.js are all variables with DOM elements, and table arrays that are needed for application.
-
-Table functions are responsible for creating table html structure, removing and adding certain classes - located in table-functions.js .
+Table functions are responsible for creating table html structure, removing and adding certain classes and all variables with DOM elements, and table arrays that are needed for application - located in table-functions.js .
 
 Placement and player functions are responsible for placing teams in their conference/division, and getting specific pieces of player data - located in placement-and-player-functions.js .
 
