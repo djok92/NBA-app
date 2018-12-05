@@ -90,11 +90,14 @@ function getPlayerImg(imgUrl) {
 
 function tableTitle(tableArr) {
   tableArr.forEach(table => {
-    const tableCaptionHolder = document.createElement("thead");
-    let tableName = document.createElement("h4");
+    const tableHeader = document.createElement("thead");
+    const tableCaptionHolder = document.createElement("tr");
+    let tableName = document.createElement("td");
+    tableName.classList.add("table__caption");
     tableName.innerHTML = table.getAttribute("data-name");
     tableCaptionHolder.appendChild(tableName);
-    table.appendChild(tableCaptionHolder);
+    tableHeader.appendChild(tableCaptionHolder);
+    table.appendChild(tableHeader);
   });
 }
 

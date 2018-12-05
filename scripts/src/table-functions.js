@@ -1,13 +1,13 @@
 function createHeader(data, tables) {
   tables.forEach(table => {
-    const tableHeader = document.createElement("thead");
+    // const tableHeader = document.createElement("thead");
     const headerRow = document.createElement("tr");
     data.forEach(item => {
-      const headerItem = document.createElement("td");
+      const headerItem = document.createElement("th");
       headerItem.innerHTML = item;
       headerRow.appendChild(headerItem);
-      tableHeader.appendChild(headerRow);
-      table.appendChild(tableHeader);
+      // tableHeader.appendChild(headerRow);
+      table.appendChild(headerRow);
     });
   });
 }
