@@ -15,3 +15,18 @@ Select2-custom.js contains method from https://select2.org for styling select (n
 
 All .js files are bundled using https://webpack.js.org/.
 
+Conference
+
+![My image](img/conference.png)
+
+Division
+
+![My image](img/division.png)
+
+All Players From Team
+
+![My image](img/team-all-players.png)
+
+Single Player Stats
+
+![My image](img/single-player-stats.png)
